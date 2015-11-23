@@ -20,10 +20,10 @@ class AplicativoConversor(QtGui.QMainWindow):
 
     def setupUi(self):
         # SETANDO O TAMANHO MAXIMO
-        self.resize(650, 350)
-        self.setMinimumSize(650, 350)
-        self.setMaximumSize(650, 350)
-        self.setWindowTitle("Conversor")
+        self.resize(675, 350)
+        self.setMinimumSize(675, 350)
+        self.setMaximumSize(675, 350)
+        self.setWindowTitle("LEDS Conversor")
 
         # Widget principal
         self.centralWidget = QtGui.QWidget(self)
@@ -38,20 +38,34 @@ class AplicativoConversor(QtGui.QMainWindow):
         self.LayoutWidget.setSpacing(3)
 
         # CRIANDO TODOS OS LAYOUTS
+        self.layoutImagem()
         self.layoutArqOri()
         self.layoutArqDes()
         self.layoutConversao()
         self.layoutBtnConversao()
 
         # ADICIONANDO TODOS OS LAYOUTS NO LAYOUT PRINCIPAL
+        self.LayoutWidget.addLayout(self.LayoutImagem)
         self.LayoutWidget.addLayout(self.LayoutArqOrigem)
         self.LayoutWidget.addLayout(self.LayoutArqDestino)
         self.LayoutWidget.addLayout(self.LayoutConversao)
         self.LayoutWidget.addLayout(self.LayoutBtnConversao)
 
+        self.menu()
+        self.toolBar()
+        self.status()
+
+
         self.LayoutPrincipal.addLayout(self.LayoutWidget)
 
         self.setCentralWidget(self.centralWidget)
+
+    def layoutImagem(self):
+        self.LBImagem = QtGui.QLabel()
+        self.LBImagem.setPixmap(QtGui.QPixmap(("Imagens//Title.png")))
+        self.LBImagem.setAlignment(QtCore.Qt.AlignCenter)
+        self.LayoutImagem =QtGui.QVBoxLayout(self.centralWidget)
+        self.LayoutImagem.addWidget(self.LBImagem)
 
     def layoutArqOri(self):
         # LAYOUT DO SELECIONAR ARQUIVO DE ORIGEM
@@ -143,7 +157,7 @@ class AplicativoConversor(QtGui.QMainWindow):
         self.inicio = 0                                  # Controla o relogio
 
     def start_conversor(self):
-        if self.nome_arquivoOrigem != '' and self.nome_arquivoDestino != '':
+        if self.LEditArqOrig.text() != '' and self.LEditArqDes.text() != '':
             self.BtnConverter.setEnabled(False)
             self.CxTexto.insertPlainText(strftime('[%H:%M:%S]')+ " Convertendo arquivo...\n")
             self.CxTexto.moveCursor(QtGui.QTextCursor.End)
