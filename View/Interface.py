@@ -24,6 +24,7 @@ class AplicativoConversor(QtGui.QMainWindow):
         self.setMinimumSize(675, 350)
         self.setMaximumSize(675, 350)
         self.setWindowTitle("LEDS Conversor")
+        self.setWindowIcon(QtGui.QIcon("View\\Imagens\\icone.png"))
 
         # Widget principal
         self.centralWidget = QtGui.QWidget(self)
@@ -62,7 +63,7 @@ class AplicativoConversor(QtGui.QMainWindow):
 
     def layoutImagem(self):
         self.LBImagem = QtGui.QLabel()
-        self.LBImagem.setPixmap(QtGui.QPixmap(("Imagens//Title.png")))
+        self.LBImagem.setPixmap(QtGui.QPixmap(("View\\Imagens\\Title.png")))
         self.LBImagem.setAlignment(QtCore.Qt.AlignCenter)
         self.LayoutImagem =QtGui.QVBoxLayout(self.centralWidget)
         self.LayoutImagem.addWidget(self.LBImagem)
@@ -80,7 +81,7 @@ class AplicativoConversor(QtGui.QMainWindow):
         self.btn_browser1 = QtGui.QPushButton("Browser...", self.centralWidget)
         self.btn_browser1.clicked.connect(self.arqOrigem)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(("Imagens//pasta.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap(("View\\Imagens\\pasta.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.btn_browser1.setIcon(icon)
 
         ## ADICIONANDO OS BOTOES DO LAYOUT DO SELECIONAR ARQUIVO DE ORIGEM
@@ -101,7 +102,7 @@ class AplicativoConversor(QtGui.QMainWindow):
         self.BtnBrowser2 = QtGui.QPushButton("Browser...", self.centralWidget)
         self.BtnBrowser2.clicked.connect(self.arqDestino)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(("Imagens//pasta.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap(("View\\Imagens\\pasta.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.BtnBrowser2.setIcon(icon)
 
         ## ADICIONANDO OS BOTOES DO LAYOUT DO SELECIONAR ARQUIVO DE ORIGEM
@@ -135,13 +136,13 @@ class AplicativoConversor(QtGui.QMainWindow):
         self.BtnConverter = QtGui.QPushButton(" Converter!", self.centralWidget)
         self.BtnConverter.clicked.connect(self.start_conversor)
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("Imagens//start_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon1.addPixmap(QtGui.QPixmap("View\\Imagens\\start_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.BtnConverter.setIcon(icon1)
 
         self.BtnSair = QtGui.QPushButton(" Sair", self.centralWidget)
         self.BtnSair.clicked.connect(self.close)
         icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap("Imagens//log_out.jpg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon2.addPixmap(QtGui.QPixmap("View\\Imagens\\log_out.jpg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.BtnSair.setIcon(icon2)
 
         ## ADICIONANDO OS BOTOES DO LAYOUT QUE MOSTRA OS BOTOES DE CONVERTER E SAIR
@@ -209,8 +210,3 @@ class AplicativoConversor(QtGui.QMainWindow):
         self.statusBar = QtGui.QStatusBar(self)
         self.setStatusBar(self.statusBar)
 
-if __name__ == "__main__":
-    root = QtGui.QApplication(sys.argv)
-    app = AplicativoConversor()
-    app.show()
-    root.exec_()
