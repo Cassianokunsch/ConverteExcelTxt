@@ -41,10 +41,6 @@ class Converte(object):
         for i in range(size_coluna):
             row = sheet1.irow(i).tolist()  # Transformando o dado da linha em uma lista
             dados.append(str(row[0]))
-            #arq.write(str(row[0]))  # Transformando o conteudo da primeira posicao da lista em string e escrevendo no arquivo
-            #arq.write("\n")  # Pulando uma linha no arquivo
-
-        #arq.close()  # Fechando o arquivo
 
 class SalvaArquivo(object):
     def __init__(self, diretorioArqDestino, lst_dados, obj):
